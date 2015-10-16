@@ -1,5 +1,6 @@
 package i_introduction._1_Functions
 
+import util.JavaCode
 import util.TODO
 
 fun foo(s: String): String {
@@ -29,5 +30,22 @@ fun todoTask1(collection: Collection<Int>) = TODO(
 
 
 fun task1(collection: Collection<Int>): String {
-    todoTask1(collection)
+    return JavaCode1().task1(collection)
+}
+
+class JavaCode1 : JavaCode() {
+    fun task1(collection: Collection<Int>): String {
+        val sb = StringBuilder()
+        sb.append("{")
+        val iterator = collection.iterator()
+        while (iterator.hasNext()) {
+            val element = iterator.next()
+            sb.append(element)
+            if (iterator.hasNext()) {
+                sb.append(", ")
+            }
+        }
+        sb.append("}")
+        return sb.toString()
+    }
 }
