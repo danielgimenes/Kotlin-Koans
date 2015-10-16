@@ -6,7 +6,7 @@ import util.JavaCode;
 
 import java.util.Collection;
 
-public class JavaCode3 extends JavaCode {
+public class JavaCode3_old extends JavaCode {
     public boolean task3(Collection<Integer> collection) {
         return Iterables.any(collection, new Predicate<Integer>() {
             @Override
