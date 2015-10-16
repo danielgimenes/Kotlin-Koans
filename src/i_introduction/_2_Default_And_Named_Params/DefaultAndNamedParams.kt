@@ -2,6 +2,7 @@ package i_introduction._2_Default_And_Named_Params
 
 import util.TODO
 import i_introduction._1_Functions.task1
+import util.JavaCode
 
 fun bar(i: Int, s: String = "", b: Boolean = true) {}
 
@@ -18,12 +19,13 @@ fun todoTask2_1() = TODO(
     """,
     references = { name: String -> JavaCode2().foo(name); foo(name) })
 
-fun foo(name: String): String = todoTask2_1()
+fun foo(name: String, number: Int = 42, toUpperCase: Boolean = false): String {
+    return (if (toUpperCase) name.toUpperCase() else name) + number
+}
 
 fun task2_1(): String {
-    todoTask2_1()
-//    return (foo("a") +
-//            foo("b", number = 1) +
-//            foo("c", toUpperCase = true) +
-//            foo(name = "d", number = 2, toUpperCase = true))
+    return (foo("a") +
+            foo("b", number = 1) +
+            foo("c", toUpperCase = true) +
+            foo(name = "d", number = 2, toUpperCase = true))
 }
