@@ -1,5 +1,6 @@
 package i_introduction._5_Nullable_Types
 
+import util.JavaCode
 import java.io.File
 import util.TODO
 
@@ -45,8 +46,7 @@ fun struggleAgainstNPE() {
     }
 
     fun throwNPEIfNull(): Int {
-        val f = files!!
-        return f.size()
+        return files!!.size()
     }
 }
 
@@ -64,7 +64,9 @@ fun todoTask5(client: Client?, message: String?, mailer: Mailer) = TODO(
 fun sendMessageToClient(
         client: Client?, message: String?, mailer: Mailer
 ) {
-    todoTask5(client, message, mailer)
+    val email = client?.personalInfo?.email ?: return;
+    if (message == null) return;
+    mailer.sendMessage(email, message);
 }
 
 class Client (val personalInfo: PersonalInfo?)
