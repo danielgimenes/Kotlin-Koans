@@ -35,4 +35,7 @@ fun todoTask5(): Nothing = TODO(
     documentation = doc5(),
     references = { getPattern(); month })
 
-fun task5(): String = todoTask5()
+fun task5(): String {
+    val result = "11 MAR 1952".matches("""\d{2}\s\w$month\s\d{4}""".toRegex())
+    return """\d{2}\s\b$month\s\d{4}"""
+}
