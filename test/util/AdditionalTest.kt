@@ -1,25 +1,25 @@
 package util
 
-import org.junit.Test as test
-import i_introduction._1_Functions._01_Functions
-import junit.framework.Assert
-import i_introduction._2_Default_And_Named_Params._02_Default_And_Named_Params
-import i_introduction._3_Lambdas._03_Lambdas
-import i_introduction._5_Nullable_Types._05_Nullable_Types
-import i_introduction._6_Smart_Casts._06_Smart_Casts
-import i_introduction._9_Extensions_On_Collections._09_Extensions_On_Collections
+import i_introduction._1_Java_To_Kotlin_Converter._01_Functions
+import i_introduction._3_Default_Arguments._03_Default_Arguments
+import i_introduction._4_Lambdas._04_Lambdas
+import i_introduction._7_Nullable_Types._07_Nullable_Types
+import i_introduction._8_Smart_Casts._08_Smart_Casts
+import ii_collections._24_Extensions_On_Collections
+import org.junit.Assert.assertTrue
+import org.junit.Test
 
 class AdditionalTest {
-    @test fun test() {
+    @Test fun test() {
         invokeTests(
                 { _01_Functions().collection() },
-                { _02_Default_And_Named_Params().testDefaultAndNamedParams() },
-                { _03_Lambdas().contains() },
-                { _05_Nullable_Types().everythingIsOk() },
-                { _06_Smart_Casts().testNum() },
-                { _09_Extensions_On_Collections().testCollectionOfOneElement() }
+                { _03_Default_Arguments().testDefaultAndNamedParams() },
+                { _04_Lambdas().contains() },
+                { _07_Nullable_Types().everythingIsOk() },
+                { _08_Smart_Casts().testNum() },
+                { _24_Extensions_On_Collections().testCollectionOfOneElement() }
         )
-        Assert.assertTrue("${JavaCode.set}", JavaCode.set!!.isEmpty())
+        assertTrue("${JavaCode.set}", JavaCode.set.isEmpty())
     }
 
     private fun invokeTests(vararg tests: () -> Unit) {

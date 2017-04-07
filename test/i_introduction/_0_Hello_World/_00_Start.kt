@@ -1,10 +1,10 @@
-package i_introduction._0_Hello_World.Hello
+package i_introduction._0_Hello_World
 
-import junit.framework.Assert
-import org.junit.Test as test
+import org.junit.Assert.assertEquals
+import org.junit.Test
 
 class _00_Start {
-    @test fun testOk() {
-        Assert.assertEquals("OK", task0())
+    @Test fun testOk() {
+        assertEquals("OK", task0())
     }
 }
