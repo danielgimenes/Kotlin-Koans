@@ -5,3 +5,4 @@ results.txt
 .idea
 build/
 *.class
+gradle
