@@ -29,11 +29,16 @@ fun todoTask37(): Nothing = TODO(
 )
 
 fun task37(): Map<Int, String> {
-    todoTask37()
-//    return buildMap {
-//        put(0, "0")
-//        for (i in 1..10) {
-//            put(i, "$i")
-//        }
-//    }
+    return buildMap {
+        put(0, "0")
+        for (i in 1..10) {
+            put(i, "$i")
+        }
+    }
+}
+
+fun buildMap(initializer: (MutableMap<Int, String>).() -> Unit): MutableMap<Int, String> {
+    val m = mutableMapOf<Int, String>()
+    m.initializer()
+    return m
 }
