@@ -8,7 +8,7 @@ data class MyDate(val year: Int, val month: Int, val dayOfMonth: Int): Comparabl
     private fun lexiOrderedStr() = "%4d%2d%2d".format(year, month, dayOfMonth)
 }
 
-operator fun MyDate.rangeTo(other: MyDate): DateRange = todoTask27()
+operator fun MyDate.rangeTo(other: MyDate): DateRange = DateRange(this, other)
 
 enum class TimeInterval {
     DAY,
@@ -16,8 +16,24 @@ enum class TimeInterval {
     YEAR
 }
 
-class DateRange(override val start: MyDate, override val endInclusive: MyDate): ClosedRange<MyDate> {
+class DateRange(override val start: MyDate, override val endInclusive: MyDate): ClosedRange<MyDate>, Iterable<MyDate> {
     override fun contains(value: MyDate): Boolean {
         return value >= start && value <= endInclusive
+    }
+
+    override fun iterator(): Iterator<MyDate> {
+        return object: Iterator<MyDate> {
+            var next = start
+            override fun hasNext(): Boolean {
+                return next <= endInclusive
+            }
+
+            override fun next(): MyDate {
+                val toReturn = next
+                next = next.nextDay()
+                return toReturn
+            }
+
+        }
     }
 }
