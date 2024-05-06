@@ -19,13 +19,24 @@ fun todoTask29(): Nothing = TODO(
         date.addTimeIntervals(timeInterval, 1)
     })
 
+operator fun MyDate.plus(interval: TimeInterval): MyDate {
+    return addTimeIntervals(interval, 1)
+}
+
 fun task29_1(today: MyDate): MyDate {
-    todoTask29()
-//    return today + YEAR + WEEK
+    return today + YEAR + WEEK
+}
+
+data class TimeChange(val interval: TimeInterval, val amount: Int)
+
+operator fun TimeInterval.times(value: Int): TimeChange {
+    return TimeChange(this, value)
+}
+
+operator fun MyDate.plus(timeChange: TimeChange): MyDate {
+    return addTimeIntervals(timeChange.interval, timeChange.amount)
 }
 
 fun task29_2(today: MyDate): MyDate {
-    todoTask29()
-//    return today + YEAR * 2 + WEEK * 3 + DAY * 5
+    return today + YEAR * 2 + WEEK * 3 + DAY * 5
 }
-
